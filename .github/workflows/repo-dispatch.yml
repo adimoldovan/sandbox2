@@ -17,4 +17,4 @@ jobs:
           node-version: 12
 
       - name: Event information
-        run: echo ${{ toJson(github.event.client_payload) }}
+        run: echo "${{ toJson(github.event.client_payload) }}"
