@@ -22,4 +22,4 @@ jobs:
           path: tmp/${{ github.event.client_payload.repository }}
           
       - name: Check repo checkout
-        run: ls -lh tmp
+        run: ls -lhR tmp
