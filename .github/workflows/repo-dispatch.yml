@@ -19,6 +19,18 @@ jobs:
       - name: Event information
         run: |
           echo "${{ toJson(github) }}"
+          
+      - name: Check event
+        run: |
+          if [ "$GITHUB_EVENT_NAME" == workflow_run ]; then
+            echo "workflow_run"
+          fi
+  
+          if [ "$GITHUB_EVENT_NAME" == workflow_run || "$GITHUB_EVENT_NAME" == repository_dispatch ]; then
+            echo "workflow_run or repository_dispatch"
+          else
+            echo "none"
+          fi
         
       - name: Checkout dispatcher repo
         uses: actions/checkout@v3
