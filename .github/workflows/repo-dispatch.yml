@@ -26,7 +26,7 @@ jobs:
             echo "workflow_run"
           fi
   
-          if [ "$GITHUB_EVENT_NAME" == workflow_run || "$GITHUB_EVENT_NAME" == repository_dispatch ]; then
+          if [ "$GITHUB_EVENT_NAME" == workflow_run ] || [ "$GITHUB_EVENT_NAME" == repository_dispatch ]; then
             echo "workflow_run or repository_dispatch"
           else
             echo "none"
