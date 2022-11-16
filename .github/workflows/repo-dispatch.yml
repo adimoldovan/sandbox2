@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.client_payload.repository }}
+          ref: ${{ github.event.client_payload.ref_name }}
           path: tmp/${{ github.event.client_payload.repository }}
           
       - name: Check repo checkout
