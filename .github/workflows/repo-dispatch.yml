@@ -33,6 +33,7 @@ jobs:
           fi
         
       - name: Checkout dispatcher repo
+        if: github.event_name == 'repository_dispatch'
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.client_payload.repository }}
