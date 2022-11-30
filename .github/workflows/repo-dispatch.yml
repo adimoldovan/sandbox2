@@ -35,11 +35,11 @@ jobs:
           fi
           
           if [[ "${SUITE}" == atomic* ]]; then
-            echo "An atomic suite"
+            echo "${SUITE} is an atomic suite"
           fi
           
           if [[ "${SUITE}" != atomic* ]]; then
-            echo "Not an atomic suite"
+            echo "${SUITE} is not an atomic suite"
           fi
         
       - name: Checkout dispatcher repo
