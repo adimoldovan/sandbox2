@@ -46,6 +46,18 @@ jobs:
         if: ${{ startsWith(github.event.client_payload.suite_name, 'atomic') }}
         run: echo "Hello atomic"
         
+      - name: Release candidate runs
+        if: github.event_name == 'repository_dispatch' && github.event.client_payload.ref_type == 'tag'
+        env:
+          VERSION: ${{ github.event.client_payload.ref_name }}
+        run: echo "NOTIFICATION_SUITE=rc-${VERSION}" >> $GITHUB_ENV
+        
+      - name: Check env
+        env: 
+          SUITE: ${{ env.NOTIFICATION_SUITE }}
+        run:
+          echo "$SUITE"
+        
       - name: Checkout dispatcher repo
         if: github.event_name == 'repository_dispatch'
         uses: actions/checkout@v3
