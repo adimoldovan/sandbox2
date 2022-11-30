@@ -22,7 +22,7 @@ jobs:
           
       - name: Check event
         env:
-          SUITE: atomic
+          SUITE: ${{ github.event.client_payload.suite_name }}
         run: |
           if [ "$GITHUB_EVENT_NAME" == workflow_run ]; then
             echo "workflow_run"
