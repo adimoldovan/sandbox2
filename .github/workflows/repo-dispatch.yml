@@ -22,7 +22,7 @@ jobs:
           
       - name: Check event
         env:
-          SUITE: ${{ startsWith(github.event.client_payload.suite_name, atomic) }}
+          SUITE: ${{ github.event.client_payload.suite_name }}
         run: |
           if [ "$GITHUB_EVENT_NAME" == workflow_run ]; then
             echo "workflow_run"
@@ -43,7 +43,7 @@ jobs:
           fi
           
       - name: Checks for atomic
-        if: ${{ github.event.client_payload.suite_name == atomic* }}
+        if: ${{ startsWith(github.event.client_payload.suite_name, 'atomic') }}
         run: echo "Hello atomic"
         
       - name: Checkout dispatcher repo
